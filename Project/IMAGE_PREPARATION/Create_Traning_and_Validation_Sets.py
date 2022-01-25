@@ -9,8 +9,8 @@ def create_train_and_val_set(target_path,train_paths,val_paths,class_file_type,i
     os.mkdir(target_path)
     os.mkdir(os.path.join(target_path, 'train'))
     os.mkdir(os.path.join(target_path, 'val'))
-    file_list = []
     for phase in [train_paths,val_paths]:
+        file_list = []
         for path in phase:
             for file in os.listdir(os.path.join(path,subfolder_name)):
                 if file.endswith('.' + class_file_type):
@@ -63,5 +63,9 @@ if __name__ == '__main__':
         'C:\Bachelor Oppgave\Datasets\Qanats Iran-Afghanistan\Id-5-Iran-58.65562-34.29336-58.71141-34.26783-zoom=17')
     train_paths.append(
         'C:\Bachelor Oppgave\Datasets\Qanats Iran-Afghanistan\Id-6-Iran-58.20017-29.19981-58.24017-29.15981-zoom=17')
+    train_paths.append(
+        'C:\Bachelor Oppgave\Datasets\Qanats Iran-Afghanistan\Id-8-Iran-58.6836-34.31308-58.71122-34.29256-zoom=17')
+    val_paths.append(
+        'C:\Bachelor Oppgave\Datasets\Qanats Iran-Afghanistan\Id-9-Iran-52.96904-32.86582-52.99303-32.84661-zoom=17')
 
     test = create_train_and_val_set(Path('C:\Bachelor Oppgave\Project\Test_Dataset'),train_paths,val_paths,'csv','png','Resized_to_256')

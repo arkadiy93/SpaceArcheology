@@ -24,8 +24,8 @@ torch.manual_seed(0)
 in_channels = 1
 num_classes = 2
 learning_rate = 0.0001
-batch_size = 5
-num_epochs = 10
+batch_size = 10
+num_epochs = 15
 momentum = 0.9
 step_size = 5
 gamma = 0.1
@@ -33,11 +33,13 @@ gamma = 0.1
 #Image Transforms
 image_transforms = {
     "train": transforms.Compose([
-       transforms.Resize((224,224)),
-       transforms.ToTensor()
+       transforms.RandomResizedCrop(224),
+       transforms.RandomHorizontalFlip(),
+       transforms.ToTensor(),
+       transforms.Normalize([0.485,0.456,0.406],[0.229,0.224,0.225])
     ]),
     "val": transforms.Compose([
-       transforms.Resize((224,224)),
+       transforms.Resize(224),
        transforms.ToTensor()
     ])
 }

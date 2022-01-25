@@ -2,20 +2,7 @@ import os
 import shutil
 from pathlib import Path
 from PIL import Image
-import csv
 
-def create_classification_csv(path,id,filetype):
-    file_list = []
-    header = ('filename','classification')
-    for file in os.listdir(path):
-        if file.endswith('.' + filetype):
-            file_list.append((file,0))
-    with open(os.path.join(path,'ID=' + id + '_Classification.csv'),'w',encoding='UTF8',newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow(header)
-        for file in file_list:
-            writer.writerow(file)
-    f.close()
 
 def image_splitter(size, path,filetype):
     store_path = Path(os.path.join(path, 'Resized_to_' + str(size)))
@@ -28,7 +15,6 @@ def image_splitter(size, path,filetype):
         if file.endswith('composite.' + filetype):
             filename = os.path.join(path, file)
     split_image(size, filename, store_path, id,filetype)
-    create_classification_csv(store_path,id,filetype)
 
 
 def split_image(size,filename,store_path,id,filetype):
@@ -55,7 +41,7 @@ def prepare_images(path, size):
     subfolders_list = [f.path for f in os.scandir(path) if f.is_dir()]
     filetype = 'png'
     for folder in subfolders_list:
-        image_splitter(256,folder,filetype)
+        image_splitter(size,folder,filetype)
 
 
 
