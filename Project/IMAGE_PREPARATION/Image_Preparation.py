@@ -10,7 +10,7 @@ def image_splitter(size, path,filetype):
         shutil.rmtree(store_path)
     os.mkdir(store_path)
     temp_id = path.split('Id-')
-    id = temp_id[-1][0]
+    id = (temp_id[-1].split('-'))[0]
     for file in os.listdir(path):
         if file.endswith('composite.' + filetype):
             filename = os.path.join(path, file)
