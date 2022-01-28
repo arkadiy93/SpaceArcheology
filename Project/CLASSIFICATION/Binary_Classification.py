@@ -25,9 +25,9 @@ class Binary_Image_Classification:
 
     #classify image methods starts the classification. All other class methods does not need to be called outside the class.
     def classify_image(self):
-        classification_file = self.find_classification_file()
+        file_exists, classification_file = self.find_classification_file()
         self.create_tile_and_classification_dict()
-        if classification_file != None:
+        if file_exists:
             self.load_classification(classification_file)
         self.fig, self.ax1, self.ax2 = self.make_plot()
         plt.ion()
@@ -77,7 +77,7 @@ class Binary_Image_Classification:
         temp_id = self.file.split('_')
         id = temp_id[-2]
         classification_file = os.path.join(self.img_tile_folder,'ID=' + str(id) + '_Classification.csv')
-        return classification_file
+        return os.path.exists(classification_file), classification_file
 
 
     def load_classification(self,file):
@@ -196,5 +196,5 @@ class Binary_Image_Classification:
 
 
 if __name__ == '__main__':
-    temp = Binary_Image_Classification('C:\Bachelor Oppgave\Datasets\Qanats Iran-Afghanistan\Id-1-Iran-58.58042-34.35781-58.60262-34.33726-zoom=17\ID_1_composite.png',256,'C:\Bachelor Oppgave\Datasets\Qanats Iran-Afghanistan\Id-1-Iran-58.58042-34.35781-58.60262-34.33726-zoom=17\Resized_to_256')
+    temp = Binary_Image_Classification('C:\Bachelor Oppgave\Datasets\Qanats Iran-Afghanistan\Id-26-Afghanistan-60.26191-33.64335-60.28269-33.6335-zoom=17\ID_26_composite.png',256,'C:\Bachelor Oppgave\Datasets\Qanats Iran-Afghanistan\Id-26-Afghanistan-60.26191-33.64335-60.28269-33.6335-zoom=17\Resized_to_256')
     temp.classify_image()
