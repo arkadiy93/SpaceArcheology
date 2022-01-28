@@ -46,4 +46,4 @@ def prepare_images(path, size):
 
 
 if __name__ == '__main__':
-    prepare_images(os.path.join("c:\\", "Bachelor Oppgave", "Datasets", "Qanats Iran-Afghanistan"),256)
+    prepare_images(os.path.join("./../../Datasets/", "Qanats Iran-Afghanistan"),256)
