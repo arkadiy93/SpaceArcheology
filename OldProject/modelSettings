@@ -1,0 +1,121 @@
+{
+  "vgg19": {
+    "model": false,
+    "pre_proc": true,
+    "ppf": "tf.keras.applications.vgg19.preprocess_input",
+    "target_size_x": 224,
+    "target_size_y": 224,
+    "model_func": "tf.keras.applications.VGG19",
+    "settings": null
+  },
+  "resnet101": {
+    "model": true,
+    "pre_proc": true,
+    "ppf": "tf.keras.applications.resnet.preprocess_input",
+    "target_size_x": 224,
+    "target_size_y": 224,
+    "model_func": "tf.keras.applications.ResNet101",
+    "settings": {
+      "weights": "imagenet",
+      "include_top": false,
+      "pooling": "avg"
+    }
+  },
+  "resnet50": {
+    "model": true,
+    "pre_proc": true,
+    "ppf": "tf.keras.applications.resnet.preprocess_input",
+    "target_size_x": 224,
+    "target_size_y": 224,
+    "model_func": "tf.keras.applications.ResNet50",
+    "settings": {
+      "include_top": false,
+      "weights": "imagenet"
+    }
+  },
+  "resnet152": {
+    "model": true,
+    "pre_proc": true,
+    "ppf": "tf.keras.applications.resnet.preprocess_input",
+    "target_size_x": 224,
+    "target_size_y": 224,
+    "model_func": "tf.keras.applications.ResNet152",
+    "settings": {
+      "weights": "imagenet",
+      "include_top": false,
+      "pooling": "avg"
+    }
+  },
+  "densenet121": {
+    "model": true,
+    "pre_proc": true,
+    "ppf": "tf.keras.applications.densenet.preprocess_input",
+    "target_size_x": 256,
+    "target_size_y": 256,
+    "model_func": "tf.keras.applications.DenseNet121",
+    "settings": {
+      "include_top": false,
+      "weights": "imagenet",
+      "input_tensor": null,
+      "input_shape_x": 256,
+      "input_shape_y": 256,
+      "input_shape_z": 3,
+      "pooling": null,
+      "classes": 2
+    }
+  },
+  "densenet201": {
+    "model": true,
+    "pre_proc": true,
+    "ppf": "tf.keras.applications.densenet.preprocess_input",
+    "target_size_x": 256,
+    "target_size_y": 256,
+    "model_func": "tf.keras.applications.DenseNet201",
+    "settings": {
+      "include_top": false,
+      "weights": "imagenet",
+      "input_tensor": null,
+      "input_shape_x": 256,
+      "input_shape_y": 256,
+      "input_shape_z": 3,
+      "pooling": null,
+      "classes": 2
+    }
+  },
+  "efficientnet_b2": {
+    "model": true,
+    "pre_proc": true,
+    "ppf": "tf.keras.applications.efficientnet.preprocess_input",
+    "target_size_x": 256,
+    "target_size_y": 256,
+    "model_func": "tf.keras.applications.EfficientNetB2}",
+    "settings": {
+      "include_top": false,
+      "weights": "imagenet",
+      "input_tensor": null,
+      "input_shape_x": 256,
+      "input_shape_y": 256,
+      "input_shape_z": 3,
+      "pooling": null,
+      "classes": 2
+    }
+  },
+  "efficientnet_b3": {
+    "model": true,
+    "pre_proc": true,
+    "ppf": "tf.keras.applications.efficientnet.preprocess_input",
+    "target_size_x": 256,
+    "target_size_y": 256,
+    "model_func": "tf.keras.applications.EfficientNetB3",
+    "settings": {
+      "include_top": false,
+      "weights": "imagenet",
+      "input_tensor": null,
+      "input_shape_x": 256,
+      "input_shape_y": 256,
+      "input_shape_z": 3,
+      "pooling": null,
+      "classes": 2
+    }
+  }
+}
