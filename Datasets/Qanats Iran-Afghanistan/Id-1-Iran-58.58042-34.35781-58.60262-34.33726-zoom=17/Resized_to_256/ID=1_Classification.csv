@@ -19,7 +19,7 @@ ID=1_x=00_y=16.png,0
 ID=1_x=00_y=17.png,0
 ID=1_x=00_y=18.png,0
 ID=1_x=00_y=19.png,0
-ID=1_x=01_y=00.png,0
+ID=1_x=01_y=00.png,exclude
 ID=1_x=01_y=01.png,0
 ID=1_x=01_y=02.png,0
 ID=1_x=01_y=03.png,0
@@ -77,7 +77,7 @@ ID=1_x=03_y=14.png,0
 ID=1_x=03_y=15.png,0
 ID=1_x=03_y=16.png,0
 ID=1_x=03_y=17.png,0
-ID=1_x=03_y=18.png,0
+ID=1_x=03_y=18.png,exclude
 ID=1_x=03_y=19.png,1
 ID=1_x=04_y=00.png,0
 ID=1_x=04_y=01.png,0

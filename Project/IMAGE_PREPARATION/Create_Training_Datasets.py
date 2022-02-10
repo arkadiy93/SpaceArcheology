@@ -61,5 +61,5 @@ class Create_Training_Datasets:
 
 
 if __name__ == '__main__':
-    temp = Create_Training_Datasets('C:\Bachelor Oppgave\Project\Test_Dataset', 'C:\Bachelor Oppgave\Datasets\Qanats Iran-Afghanistan', 'csv', 'png', 'Resized_to_256')
+    temp = Create_Training_Datasets('C:\Bachelor Oppgave\Datasets\Temp1', 'C:\Bachelor Oppgave\Datasets\Temp', 'csv', 'png', 'Resized_to_1024')
     temp.create_train_and_val_set()
