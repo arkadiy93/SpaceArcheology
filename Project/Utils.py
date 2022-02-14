@@ -47,7 +47,7 @@ def create_list_from_text_file():
     for line in lines:
         if not line.strip():
             continue
-        lat, long = line.split(",")
+        lat, long, _ = line.split(",")
         data.append((float(lat), float(long)))
 
     writeToTarget(data)
@@ -62,18 +62,21 @@ def load_json():
         if props.get('kind') == 'fort':
             forts.append(entry)
 
-    coordinates = [fort.get('geometry').get('coordinates') for fort in forts]
+
+    coordinates = [(fort.get('geometry').get('coordinates'), fort.get('properties').get('id')) for fort in forts]
     return coordinates[:20]
 
 def create_source_file(coords):
     source = os.path.join(source_file)
     with open(source, 'w') as file:
-        for lang, long in coords:
-            file.write(",".join([str(lang), str(long)]))
+        for (coord, id) in coords:
+            lang, long = coord
+            file.write(",".join([str(lang), str(long), str(id)]))
             file.write("\n")
 
 
 if __name__ == "__main__":
     coords = load_json()
     create_source_file(coords)
+
     create_list_from_text_file()

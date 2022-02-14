@@ -102,7 +102,7 @@ if __name__ == '__main__':
     # qanat_folder = os.path.join(datasets_path, "Qanats Iran-Afghanistan")
     # fortress_file = os.path.join(datasets_path, "Fortress_Datasets_Iran-Pakistan.xlsx")
     # fortress_folder = os.path.join(datasets_path, "Fortresses Iran-Pakistan")
-    # fortress_file_uzbek = os.path.join(datasets_path, "Fortress_Datasets_Uzbekistan.xlsx")
-    # fortress_folder_uzbek = os.path.join(datasets_path, "Fortresses_Uzbekistan")
+    fortress_file_uzbek = os.path.join(datasets_path, "Fortress_Datasets_Uzbekistan.xlsx")
+    fortress_folder_uzbek = os.path.join(datasets_path, "Fortresses_Uzbekistan")
 
-    #download_and_store_datasets(fortress_file_uzbek, fortress_folder_uzbek)
+    download_and_store_datasets(fortress_file_uzbek, fortress_folder_uzbek)
