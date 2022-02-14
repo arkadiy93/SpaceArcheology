@@ -70,7 +70,7 @@ def create_source_file(coords):
     source = os.path.join(source_file)
     with open(source, 'w') as file:
         for (coord, id) in coords:
-            lang, long = coord
+            long, lang = coord
             file.write(",".join([str(lang), str(long), str(id)]))
             file.write("\n")
 
