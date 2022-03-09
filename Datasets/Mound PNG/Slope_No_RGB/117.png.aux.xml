@@ -1,0 +1,29 @@
+<PAMDataset>
+  <SRS dataAxisToSRSAxisMapping="2,1,3">COMPD_CS["unknown",PROJCS["ETRS_1989_UTM_Zone_32N",GEOGCS["GCS_ETRS_1989",DATUM["European_Terrestrial_Reference_System_1989",SPHEROID["GRS_1980",6378137.0,298.257222101,AUTHORITY["EPSG","7019"]],AUTHORITY["EPSG","6258"]],PRIMEM["Greenwich",0.0,AUTHORITY["EPSG","8901"]],UNIT["Degree",0.0174532925199433,AUTHORITY["EPSG","9102"]],AUTHORITY["EPSG","4258"]],PROJECTION["Transverse_Mercator",AUTHORITY["Esri","43006"]],PARAMETER["False_Easting",500000.0,AUTHORITY["Esri","100001"]],PARAMETER["False_Northing",0.0,AUTHORITY["Esri","100002"]],PARAMETER["Central_Meridian",9.0,AUTHORITY["Esri","100010"]],PARAMETER["Scale_Factor",0.9996,AUTHORITY["Esri","100003"]],PARAMETER["Latitude_Of_Origin",0.0,AUTHORITY["Esri","100021"]],UNIT["Meter",1.0,AUTHORITY["EPSG","9001"]],AUTHORITY["EPSG","25832"]],VERTCS["NN2000_height",VDATUM["Norway_Normal_Null_2000",AUTHORITY["EPSG","1096"]],PARAMETER["Vertical_Shift",0.0,AUTHORITY["Esri","100006"]],PARAMETER["Direction",1.0,AUTHORITY["Esri","100007"]],UNIT["Meter",1.0,AUTHORITY["EPSG","9001"]],AUTHORITY["EPSG","5941"]]]</SRS>
+  <Metadata>
+    <MDI key="DataType">Generic</MDI>
+  </Metadata>
+  <PAMRasterBand band="1">
+    <Histograms>
+      <HistItem>
+        <HistMin>-0.5</HistMin>
+        <HistMax>99.5</HistMax>
+        <BucketCount>100</BucketCount>
+        <IncludeOutOfRange>1</IncludeOutOfRange>
+        <Approximate>0</Approximate>
+        <HistCounts>164|455|768|1022|1420|1722|2138|2425|2817|2945|3101|2911|2605|2303|1877|1429|1168|825|629|502|434|394|352|356|300|269|248|220|244|213|160|199|171|160|153|133|139|130|116|120|115|106|104|108|106|102|88|104|96|78|85|81|84|67|57|69|55|58|51|62|28|47|53|38|37|31|26|24|31|21|28|27|21|25|23|21|18|8|7|10|9|4|5|6|7|6|6|1|0|4|5|1|3|1|0|1|2|1|0|1</HistCounts>
+      </HistItem>
+    </Histograms>
+    <Metadata>
+      <MDI key="STATISTICS_COVARIANCES">148.7305345733629</MDI>
+      <MDI key="STATISTICS_EXCLUDEDVALUES"></MDI>
+      <MDI key="STATISTICS_MAXIMUM">99</MDI>
+      <MDI key="STATISTICS_MEAN">14.1963</MDI>
+      <MDI key="STATISTICS_MEDIAN">11.000000</MDI>
+      <MDI key="STATISTICS_MINIMUM">0</MDI>
+      <MDI key="STATISTICS_SKIPFACTORX">1</MDI>
+      <MDI key="STATISTICS_SKIPFACTORY">1</MDI>
+      <MDI key="STATISTICS_STDDEV">12.195512886852</MDI>
+    </Metadata>
+  </PAMRasterBand>
+</PAMDataset>
