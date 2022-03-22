@@ -29,4 +29,4 @@ def renumber_images(number_of_digits,base_folder,image_type,classification_type)
 
 
 if __name__ == '__main__':
-    renumber_images(4,'C:\Bachelor Thesis\SpaceArcheology\Datasets\Test','png','csv')
+    renumber_images(5,'C:\Bachelor Thesis\Mound PNG','png','csv')
