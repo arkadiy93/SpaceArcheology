@@ -1,0 +1,142 @@
+# copy for arkadiy
+from pip._vendor import requests
+from furl import furl
+import mercantile
+import os
+from PIL import Image
+from io import BytesIO
+import openpyxl
+
+datasets_path = os.path.join(os.getcwd(), os.pardir, os.pardir, "Datasets")
+zoom = 17
+TILE_SIZE = 512
+
+MB_KEY = 'sk.eyJ1IjoiZml2ZWwxOTc0IiwiYSI6ImNreHl4b244NTJ2a3AycG12aWVycnRwb2UifQ.C1-Dw9HwshZUzNE7TIKmmQ'
+SOURCE_URL = "https://api.mapbox.com/v4/mapbox.satellite"
+
+def get_last_used_id(folder):
+    ids = []
+
+    if len(os.listdir(folder)) == 0:
+        return 0
+
+    if os.listdir(folder)[0] == ".DS_Store" and len(os.listdir(folder)) == 1:
+        return 0
+
+    for name in os.listdir(folder):
+        name_parts = name.split("-")
+        if name_parts[0] == "Id":
+            ids.append(int(name_parts[1]))
+
+    ids.sort()
+    return ids[-1]
+
+
+def download_and_store_datasets(file, folder, offset=0, count=200):
+    dataset_list = import_dataset_info(file, offset=offset, count=count)
+    # id = get_last_used_id(folder)
+    for i, data in enumerate(dataset_list):
+        #id += 1
+        print(i)
+        download_image(data, folder)
+    print("done")
+
+
+def import_dataset_info(file, offset=0, count=200):
+    dataset_list = []
+    workbook = openpyxl.load_workbook(file)
+    sheet = workbook.active
+
+    min_row = 2 + offset
+    i = 0
+    for row in sheet.iter_rows(min_row=min_row):
+        if i >= count:
+            break
+        cell_values = tuple([cell.value for cell in row])
+        dataset_list.append(cell_values)
+        i += 1
+
+    return dataset_list
+
+
+# def download_image(data, folder, image_id):
+def download_image(data, folder):
+    longitude_top_left, latitude_top_left, longitude_bottom_right, latitude_bottom_right, country, location_id = data
+
+    # Parameters for mercantile.tiles is (east,south,west,north,zoom).
+    tile_list = list(
+        mercantile.tiles(longitude_top_left, latitude_bottom_right, longitude_bottom_right, latitude_top_left, zoom)
+    )
+
+    if len(tile_list) == 0 or len(tile_list) > 500:
+        raise ValueError('Number of tiles returned are 0 or larger than 500. Check coordinate input.')
+
+    # parts = [
+    #     'Id',
+    #     image_id,
+    #     country,
+    #     longitude_top_left,
+    #     latitude_top_left,
+    #     longitude_bottom_right,
+    #     latitude_bottom_right,
+    #     'zoom={}'.format(zoom),
+    # ]
+
+    #tiles_folder_name = "-".join(str(value) for value in parts)
+    #path_to_tiles = os.path.join(folder, tiles_folder_name)
+
+    # if not os.path.isdir(path_to_tiles):
+    #     os.mkdir(path_to_tiles)
+
+    first_tile, last_tile = tile_list[0], tile_list[-1]
+    xMin, yMin = first_tile.x, first_tile.y
+    xMax, yMax = last_tile.x, last_tile.y
+
+    rows = yMax - yMin + 1
+    cols = xMax - xMin + 1
+
+    composite_image = Image.new('RGB', (TILE_SIZE * cols, TILE_SIZE * rows))
+
+    x_coords = list(dict.fromkeys([tile.x for tile in tile_list]))
+    y_coords = list(dict.fromkeys([tile.y for tile in tile_list]))
+    for i, tile in enumerate(tile_list):
+        tile_img = download_tile(tile)
+        x_position = x_coords.index(tile.x) * TILE_SIZE
+        y_position = y_coords.index(tile.y) * TILE_SIZE
+        composite_image.paste(tile_img, (x_position, y_position))
+
+    # composite_image_name = "_".join(['ID', "0{}".format(image_id), "composite", location_id])
+    composite_image_name = location_id
+    composite_image_path = os.path.join(folder, "{}.png".format(composite_image_name))
+    composite_image.save(composite_image_path)
+
+
+def download_tile(tile):
+    url = furl(SOURCE_URL) \
+        .add(path=str(zoom)) \
+        .add(path=str(tile.x)) \
+        .add(path="{}@2x.pngraw".format(str(tile.y))) \
+        .add(query_params={'access_token': str(MB_KEY)}).url
+
+    response = requests.get(url, stream=True)
+    return Image.open(BytesIO(response.content))
+
+
+if __name__ == '__main__':
+    print("start")
+    # qanat_file = os.path.join(datasets_path, "Qanat_Datasets_Iran-Afghanistan.xlsx")
+    # qanat_folder = os.path.join(datasets_path, "Qanats Iran-Afghanistan")
+    # fortress_file = os.path.join(datasets_path, "Fortress_Datasets_Iran-Pakistan.xlsx")
+    # fortress_folder = os.path.join(datasets_path, "Fortresses Iran-Pakistan")
+    # fortress_file_uzbek = os.path.join(datasets_path, "Fortress_Datasets_Uzbekistan.xlsx")
+    # fortress_folder_uzbek = os.path.join(datasets_path, "Fortresses_Uzbekistan")
+    fortress_file_uzbek = os.path.join(datasets_path, "asia.xlsx")
+    fortress_folder_uzbek = os.path.join(datasets_path, "Asia")
+
+    # fortress_file_iran = os.path.join(datasets_path, "Fortress_Datasets_Iran.xlsx")
+    # fortress_folder_iran = os.path.join(datasets_path, "Fortresses_Iran")
+
+    #negative_fortress = os.path.join(datasets_path, "Negative_Fortress.xlsx")
+    #negative_fortress_folder = os.path.join(datasets_path, "Negative_Fortresses")
+
+    download_and_store_datasets(fortress_file_uzbek, fortress_folder_uzbek, offset=500, count=100)
