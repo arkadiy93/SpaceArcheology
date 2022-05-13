@@ -1,6 +1,3 @@
 filename,width,height,class,xmin,ymin,xmax,ymax
-00099.png,160,196,mound,7,137,62,188
-00099.png,160,196,mound,60,5,84,24
-00099.png,160,196,mound,85,24,101,38
-00099.png,160,196,mound,90,64,107,82
-00099.png,160,196,mound,2,6,24,29
+00099.png,200,200,mound,48,76,103,129
+00099.png,200,200,mound,128,5,147,21
