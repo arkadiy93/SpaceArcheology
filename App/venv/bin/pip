@@ -1,8 +1,3 @@
-#!/Users/arkadiy/thesis/SpaceArcheology/App/venv/bin/python
-# -*- coding: utf-8 -*-
-import re
-import sys
-from pip._internal.cli.main import main
-if __name__ == '__main__':
-    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
-    sys.exit(main())
+version https://git-lfs.github.com/spec/v1
+oid sha256:16932b8cbfd351a47434800cbe552cf619307a73506d60b6a300ad53da3c721d
+size 239

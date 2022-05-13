@@ -1,8 +1,3 @@
-#!/Users/arkadiy/thesis/SpaceArcheology/App/venv/bin/python
-# -*- coding: utf-8 -*-
-import re
-import sys
-from flask.cli import main
-if __name__ == '__main__':
-    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
-    sys.exit(main())
+version https://git-lfs.github.com/spec/v1
+oid sha256:984bac1ab34f33058d21ad273630fd61066c826bc5124744ab12148256d00992
+size 226
